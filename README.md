@@ -185,34 +185,46 @@ grep "^," spacecraft_journey_catalog.csv
 
 **6.1.2 - Great, we can see that at least 10 rows are affected and are missing values for field 1 of the CSV. Now, how can we use this information?**
 
-**6.1.3 - The first thing we can do is create a file with the specific records that are missing values for field one. We can do this in 2 ways: `grep` input pipe or using the CSV as the input file. No matter the method we choose, the `sed` substitution command itself is the same for both. We will need to substitute the beginning of the line and comma (`^,`) with something like `Missing Summary`, and output only those specific lines using the `p` and `n` options. Then we can write the output to a file called `missing_items.csv` and then run `cat missing_items.csv` to visualize the newly created file.**
+**6.1.3 - The first thing we can do is create a file with the specific records that are missing values for field one. We can do this in 2 ways: `grep` input pipe or using the CSV as the input file. No matter the method we choose, the `sed` substitution command itself is the same for both. We will need to substitute the beginning of the line and comma (`^,`) with something like `Missing Summary`, and output only those specific lines using the `p` and `n` options. Then we can write the output to a file called `missing_items.csv`.**
 
 ```bash
 grep "^," spacecraft_journey_catalog.csv | sed -n 's/^,/Missing Summary,/p' > missing_items.csv
-cat missing_items.csv 
 ```
 **or**
 
 ```bash
 sed -n 's/^,/Missing Summary,/p' spacecraft_journey_catalog.csv > missing_items.csv
-cat missing_items.csv 
+```
+
+**6.1.4 - We then run a `cat` to visualize the newly created CSV**
+
+```bash
+cat missing_items.csv
 ```
 
 ### **6.2 - Now that we have a file of the “corrupted” data, we could potentially also create a new CSV file that substitutes the rows with `Missing Summary` as a stopgap. Again, we could do this using the `grep` pipe, but we will just the input CSV moving forward.** 
 
-**6.2.1 - In the `sed` command, we do the same thing we did to substitute the empty values, but we do not want to isolate them hence no `p` or `n` options. We then take the entire output and write it into a new CSV called `updated_items.csv`. We then run a `grep` to confirm that the new CSV has used `Missing Summary` as a stopgap for the rows missing values for field one.**
+**6.2.1 - In the `sed` command, we do the same thing we did to substitute the empty values, but we do not want to isolate them hence no `p` or `n` options. We then take the entire output and write it into a new CSV called `updated_items.csv`.**
 
 ```bash
 sed 's/^,/Missing Summary,/' spacecraft_journey_catalog.csv > updated_items.csv
+```
+
+**6.2.2 - We then run a `grep` to confirm that the new CSV has used `Missing Summary` as a stopgap for the rows missing values for field one.**
+```bash
 grep "Missing Summary" updated_items.csv 
 ```
 
 ### **6.3 - Another thing we could do with this initial CSV is to create a new CSV that lacks the “corrupted” rows.**
 
-**6.3.1 - We will utilize the deletion commands we introduced in the first part of the walkthrough. We use the same `^,` pattern to act on; however, instead of substitution, we are doing deletion. If you remember, when doing it the way we are, we are telling sed to delete the entire line if it contains the pattern. We can then confirm that the deletions occurred by running a `grep` on the newly created CSV, which should return nothing.**
+**6.3.1 - We will utilize the deletion commands we introduced in the first part of the walkthrough. We use the same `^,` pattern to act on; however, instead of substitution, we are doing deletion. If you remember, when doing it the way we are, we are telling sed to delete the entire line if it contains the pattern.**
 
 ```bash
 sed '/^,/ d' spacecraft_journey_catalog.csv > removed_items.csv
+```
+
+**6.3.2 - We can then confirm that the deletions occurred by running a `grep` on the newly created CSV, which should return nothing.**
+```bash
 grep "^," removed_items.csv
 ```
 
