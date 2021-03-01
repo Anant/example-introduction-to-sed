@@ -231,9 +231,9 @@ grep "^," removed_items.csv
 And that will wrap up our walkthrough on basic `sed` operations as well as a potential real-world scenario in which we can use a tool like sed to do some fast data engineering.
 
 ### Additional Resources
-- [Live Demo]()
-- [Accompanying Blog]()
-- [Accompanying SlideShare]()
+- [Live Demo](https://youtu.be/EjU_juOpa00)
+- [Accompanying Blog](https://blog.anant.us/data-engineers-lunch-12-introduction-to-sed-for-data-engineering/)
+- [Accompanying SlideShare](https://www.slideshare.net/AnantCorp/data-engineers-lunch-12-introduction-to-sed-for-data-engineering)
 - https://github.com/adp8ke/Introduction-to-sed
 - https://www.gnu.org/software/sed/manual/sed.html
 - https://www.oracle.com/technical-resources/articles/dulaney-sed.html
