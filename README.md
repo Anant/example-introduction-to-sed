@@ -5,7 +5,7 @@ Learn how to get started with [sed](https://www.gnu.org/software/sed/)!
 **We recommend going through this walkthrough in [Gitpod](https://gitpod.io/) as Gitpod will have everything we need for this walkthrough. Hit the button below to get started!**
 </br>
 </br>
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/adp8ke/Introduction-to-sed) 
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/Anant/example-introduction-to-sed) 
 </br>
 </br>
 If you prefer to do this locally, then you may need to download the latest version of [GNU sed](https://www.gnu.org/software/sed/#download) if you do not have it on your local OS.
